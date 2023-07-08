@@ -1,6 +1,14 @@
-#include <bits/stdc++.h>
+//wecu's template -- works with c++20
 
+#include <bits/stdc++.h>
+#define forn(n) for(int i = 0; i < n; i++)
+#define endl '\n'
+#define int long long
+
+typedef long long ll;
 using namespace std;
+
+//void pc(auto& c){for_each(c.begin(), c.end(), [](auto u){cout << u << " ";});}
 
 class SegmentTree {
     private:
@@ -55,8 +63,31 @@ class SegmentTree {
     }
 };
 
+void solution(){
+    int n, q;
+    cin >> n >> q;
+    vector<int> a(n);
+    forn(n){cin >> a[i];}
+    SegmentTree s(a);
+    forn(q){
+        int t, j, k;
+        cin >> t >> j >> k;
+        if(t == 1){
+            s.update(j-1, k);
+        }else{
+            cout << s.query(j-1, k-1) << endl;
+        }
+    }
+}
+
+#undef int
 int main(){
-    vector<int> b = {1, 2, 3, 4, 5, 6, 7};
-    SegmentTree test(b);
-    test.print();
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int tc = 1;
+    //cin >> tc;
+    for(int i = 1; i <= tc; i++){
+        solution();
+        cout << endl;
+    }
 }

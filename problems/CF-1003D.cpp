@@ -27,8 +27,32 @@ void pv(vi a) {
     #endif
 }
 
+int mn(int n, map<int, int, greater<int>>& mp){
+    int ans = 0;
+    for(auto i : mp){
+        if((ll) i.first * (ll) i.second > (ll) n){
+            ans += n/i.first;
+            n -= n/i.first * i.first;
+        }else{
+            ans += i.second;
+            n -= i.first*i.second;
+        }
+    }
+    return n == 0 ? ans : -1;
+}
+
 void solution(){
-    
+    int n, q; cin >> n >> q;
+    map<int, int, greater<int>> mp;
+    forn(n){
+        int t; cin >> t;
+        mp[t]++;
+    }
+
+    forn(q){
+        int t; cin >> t;
+        cout << mn(t, mp) << endl;
+    }
 }
 
 int main(){

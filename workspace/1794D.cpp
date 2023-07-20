@@ -27,8 +27,15 @@ void pv(vi a) {
     #endif
 }
 
+vector<bool> prime;
+
 void solution(){
-    
+    int n; cin >> n;
+    vi a(n);
+    forn(n){cin >> a[i];}
+
+    //(#Prime CHOOSE N * N!) - (#REPEATS) = ANSWER
+    //#REPEATS = [?] --> N! * N (?)
 }
 
 int main(){

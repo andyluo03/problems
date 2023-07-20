@@ -27,15 +27,38 @@ void pv(vi a) {
     #endif
 }
 
+ll fn(ll n){
+    ll base = 1;
+    while(base < n)
+        base *= 3;
+    ll ans = 0;
+    while(base){
+        ans += n/base;
+        n=n%base;
+        base/=3;
+    }
+    return ans;
+}
+
 void solution(){
-    
+    ll n, k; cin >> n >> k;
+    int digit_sum = fn(n);
+    if(digit_sum > k){
+        cout << "No";
+        return;
+    }
+    if((k-digit_sum)%2 == 0){
+        cout << "Yes";
+    }else{
+        cout << "No";
+    }
 }
 
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     int tc = 1;
-    //cin >> tc;
+    cin >> tc;
     for(int i = 1; i <= tc; i++){
         solution();
         cout << endl;

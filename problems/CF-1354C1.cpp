@@ -11,6 +11,8 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
+#include <math.h>
+#include <iomanip>
 
 #define forn(n) for(int i = 0; i < n; i++)
 #define endl '\n'
@@ -27,15 +29,23 @@ void pv(vi a) {
     #endif
 }
 
+#define _PI 3.14159265358979
+
 void solution(){
-    
+    double n; cin >> n;
+    n*=2;
+    long double angle = ((n-2)*180)/n;
+    angle *= _PI/180.0;
+    long double ans = 2 * 0.5 * tan(angle/2);
+    //angles stuff ?!?
+    cout << setprecision(9) << ans;
 }
 
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     int tc = 1;
-    //cin >> tc;
+    cin >> tc;
     for(int i = 1; i <= tc; i++){
         solution();
         cout << endl;

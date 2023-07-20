@@ -28,7 +28,18 @@ void pv(vi a) {
 }
 
 void solution(){
-    
+    int n, m; cin >> n >> m;
+    vector<pi> edges(m);
+    forn(m){
+        cin >> edges[i].first >> edges[i].second;
+        edges[i].first--;
+        edges[i].second--;
+    }
+
+    vector<int> colors(n);
+    forn(n){cin >> colors[i];}
+
+    vector<bool> seen(n);
 }
 
 int main(){

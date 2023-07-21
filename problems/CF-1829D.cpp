@@ -27,22 +27,38 @@ void pv(vi a) {
     #endif
 }
 
-vector<bool> prime;
+bool helper(int n, int target){
+    if(n == target) return true;
+    if(n%3 != 0){return false;}
+    if(n== 0) {return false;}
+    
+    return helper(n/3, target) || helper((n/3)*2, target);
+}
 
 void solution(){
-    int n; cin >> n;
-    vi a(n);
-    forn(n){cin >> a[i];}
+    int n, m; cin >> n >> m;
+    if(n<m){
+        cout << "NO";
+        return;
+    }
 
-    //(#Prime CHOOSE N * N!) - (#REPEATS) = ANSWER
-    //#REPEATS = [?] --> N! * N (?)
+    if(n==m){
+        cout << "YES";
+        return;
+    }
+
+    if(helper(n, m)){
+        cout << "YES";
+        return;
+    }
+    cout << "NO";
 }
 
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     int tc = 1;
-    //cin >> tc;
+    cin >> tc;
     for(int i = 1; i <= tc; i++){
         solution();
         cout << endl;

@@ -28,25 +28,29 @@ void pv(vi a) {
 }
 
 void solution(){
-    int n, m; cin >> n >> m;
-    vector<pi> edges(m);
-    forn(m){
-        cin >> edges[i].first >> edges[i].second;
-        edges[i].first--;
-        edges[i].second--;
+    int n; cin >> n;
+    vector<int> a(n);
+    forn(n){cin>>a[i];}
+
+    int ans = 0;
+    int t   = 0;
+    for(int i = 0; i < a.size(); i++){
+        if(a[i] == 0){
+            t++;
+        }else{
+            t=0;
+        }
+        ans = max(ans, t);
     }
 
-    vector<int> colors(n);
-    forn(n){cin >> colors[i];}
-
-    vector<bool> seen(n);
+    cout << ans;
 }
 
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     int tc = 1;
-    //cin >> tc;
+    cin >> tc;
     for(int i = 1; i <= tc; i++){
         solution();
         cout << endl;

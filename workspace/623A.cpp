@@ -18,7 +18,16 @@ void pv(vi a) {
 }
 
 void solution(){
-    
+    int n, m; cin >> n >> m;
+
+    map<int, set<int>> graph;
+
+    forn(m){
+        int a, b;
+        cin >> a >> b;
+        a--; b--;
+
+    }
 }
 
 int main(){

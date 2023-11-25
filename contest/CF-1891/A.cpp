@@ -17,24 +17,40 @@ void pv(vi a) {
     #endif
 }
 
-void solution(){
-    int n, m; cin >> n >> m;
-
-    map<int, set<int>> graph;
-
-    forn(m){
-        int a, b;
-        cin >> a >> b;
-        a--; b--;
-
+bool check(vector<int>& a, int s){
+    int e = s*2-1;
+    for(int i = s+1; i <= min(e, static_cast<int>(a.size())-1); i++){
+        if(a[i] < a[i-1]){
+            return false;
+        }   
     }
+    return true;
+}
+
+void solution(){
+    int n; cin >> n;
+    vector<int> a(n);
+    forn(n){cin >> a[i];}
+
+    int p2 = 1;
+
+    while(p2 < a.size()){
+        if(!check(a, p2)){
+            cout << "NO";
+            return;
+        }
+
+        p2*=2;
+    }
+
+    cout << "YES";
 }
 
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(0);
     int tc = 1;
-    //cin >> tc;
+    cin >> tc;
     for(int i = 1; i <= tc; i++){
         solution();
         cout << endl;

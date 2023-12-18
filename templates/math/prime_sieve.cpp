@@ -1,17 +1,13 @@
-#include <vector>
-#include <bitset>
-#include <iostream>
-#include <chrono>
+const int MAX_N = 2e5+1;
+bool composite[MAX_N]{false};
 
-const int MAX_N = 2e5;
-std::vector<bool> sieve(MAX_N);
-std::vector<int> primes;
-void compute_sieve_2 () {
-  for(int i = 2; i < sieve.size(); i++){
-    if(!sieve[i]) continue;
-    for(int j = i*i; j < sieve.size(); j+=i){
-      sieve[j] = false;
+void sieve(){
+  for(int i = 0; i < MAX_N; i++){
+    //if prime
+    if(!composite[i]){
+      for(int j = i*2; j < MAX_N; j+=i){
+        composite[j] = true;
+      }
     }
-    primes.emplace_back(i);
   }
 }

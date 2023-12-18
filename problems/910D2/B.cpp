@@ -17,33 +17,21 @@ void pv(vi a) {
     #endif
 }
 
-bool check(vector<int>& a, int s){
-    int e = s*2-1;
-    for(int i = s+1; i <= min(e, static_cast<int>(a.size())-1); i++){
-        if(a[i] < a[i-1]){
-            return false;
-        }   
-    }
-    return true;
-}
-
 void solution(){
     int n; cin >> n;
-    vector<int> a(n);
-    forn(n){cin >> a[i];}
+    vi a(n);
+    forn(n){cin>>a[i];}
 
-    int p2 = 1;
+    ll ans = 0;
+    int msf = a[a.size()-1];
+    for(int i = a.size()-2; i >= 0; i--){
+        int ops = (a[i] + msf - 1) / msf;
+        msf = a[i]/ops;
 
-    while(p2 < a.size()){
-        if(!check(a, p2)){
-            cout << "NO";
-            return;
-        }
-
-        p2*=2;
+        //cout << i << " " << a[i] << " " << msf << endl; 
+        ans += ops - 1;
     }
-
-    cout << "YES";
+    cout << ans;
 }
 
 int main(){
